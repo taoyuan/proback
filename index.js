@@ -1,6 +1,5 @@
 "use strict";
 
-exports.createPromiseCallback = createPromiseCallback;
 var Promise = require('bluebird');
 
 function createPromiseCallback() {
@@ -16,3 +15,6 @@ function createPromiseCallback() {
   cb.promise = promise;
   return cb;
 }
+
+module.exports = exports = createPromiseCallback;
+exports.createPromiseCallback = createPromiseCallback;

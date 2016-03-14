@@ -7,7 +7,7 @@ function fn(throws, cb) {
     cb = throws;
     throws = null;
   }
-  cb = cb || proback.createPromiseCallback();
+  cb = cb || proback();
   setTimeout(function () {
     if (throws) {
       cb(throws);
