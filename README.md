@@ -10,6 +10,8 @@ $ npm install --save proback
 
 ## Usage
 
+### Generic usage
+
 ```js
 var proback = require('proback');
 
@@ -46,6 +48,27 @@ fn('def').catch(function () {
 });
 
 ```
+
+### Resolve with multiple arguments
+
+```js
+function fnResolveWithMultiArgs(cb) {
+  cb = cb || proback();
+  setTimeout(function () {
+    cb(null, 1, 2, 3);
+  });
+  return cb.promise;
+}
+
+fnResolveWithMultiArgs().then(function (data) {
+  console.log(data);    // [1, 2, 3]
+});
+    
+fnResolveWithMultiArgs().spread(function (a, b, c) {
+  console.log(a, b, c); // 1, 2, 3
+});
+```
+
 ## License
 
 MIT © [taoyuan]()
