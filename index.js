@@ -1,6 +1,7 @@
 "use strict";
 
 var Promise = require('bluebird');
+var slice = Array.prototype.slice;
 
 function createPromiseCallback() {
   var cb;
@@ -8,6 +9,9 @@ function createPromiseCallback() {
     cb = function (err, data) {
       if (err) {
         return reject(err);
+      }
+      if (arguments.length > 2) {
+        return resolve.call(undefined, slice.call(arguments, 1));
       }
       return resolve(data);
     };
