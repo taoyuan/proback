@@ -11,7 +11,7 @@ function createPromiseCallback() {
         return reject(err);
       }
       if (arguments.length > 2) {
-        return resolve.call(undefined, slice.call(arguments, 1));
+        return resolve(slice.call(arguments, 1));
       }
       return resolve(data);
     };
